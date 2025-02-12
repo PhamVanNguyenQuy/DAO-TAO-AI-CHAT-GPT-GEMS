@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lớp học AI Online</title>
+    <title>Khóa Học AI Tự Động</title>
     <script src="https://js.puter.com/v2/"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Chào mừng đến với lớp học AI tự động 🎉</h1>
-    <p>Hãy đăng ký để bắt đầu hành trình học tập!</p>
+    <h1>Chào mừng đến với khóa học AI!</h1>
+    <p>Hãy nhập mã Python vào ô dưới đây để thực hành ngay:</p>
     
-    <button onclick="registerUser()">Đăng ký ngay</button>
+    <textarea id="code-input" rows="5" cols="50">
+print("Xin chào AI!")
+    </textarea>
+    <br>
+    <button onclick="runCode()">Chạy Mã</button>
+    <p><strong>Kết Quả:</strong></p>
+    <pre id="output"></pre>
 
-    <script src="script.js"></script>
+    <script>
+        function runCode() {
+            let code = document.getElementById("code-input").value;
+            Puter.run(code).then(output => {
+                document.getElementById("output").innerText = output;
+            }).catch(error => {
+                document.getElementById("output").innerText = "Lỗi: " + error;
+            });
+        }
+    </script>
+</body>
+</html>
