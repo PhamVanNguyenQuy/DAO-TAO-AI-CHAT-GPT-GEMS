@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <script src="https://js.puter.com/v2/"></script>
+    <script src="script.js"></script>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEMS TRAINNING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🎉 KÍNH CHÀO QUÝ HỌC VIÊN ĐẾN VỚI LỚP ĐÀO TẠO AI CHAT GPT GEMS</h1>
+    <p>KÍNH MỜI QUÝ HỌC VIÊN ĐĂNG KÝ HỌC ĐĂNG NHẬP ĐỂ BẮT ĐẦU HÀNH TRÌNH HỌC TẬP Ạ!</p>
+    
+    <div id="authSection">
+        <!-- Form đăng ký -->
+        <h2>Đăng ký</h2>
+        <form id="registerForm">
+            <input type="email" id="regEmail" placeholder="Nhập email" required>
+            <input type="password" id="regPassword" placeholder="Nhập mật khẩu" required>
+            <button type="button" onclick="registerUser()">Đăng ký</button>
+        </form>
+
+        <!-- Form đăng nhập -->
+        <h2>Đăng nhập</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Nhập email" required>
+            <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+            <button type="button" onclick="loginUser()">Đăng nhập</button>
+        </form>
+
+        <!-- Khu vực hiển thị sau khi đăng nhập -->
+        <div id="welcomeSection" style="display:none;">
+            <h2>Chào mừng, <span id="userEmail"></span>!</h2>
+            <button onclick="logoutUser()">Đăng xuất</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
