@@ -4,116 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lớp Học AI Tự Động</title>
+    <!-- Thêm thư viện Puter.js -->
     <script src="https://js.puter.com/v2/"></script>
 </head>
 <body>
+
     <h1>🎓 Chào Mừng Đến Với Lớp Học AI!</h1>
+    <p>Trang web này sẽ giúp bạn học AI hoàn toàn tự động!</p>
 
-    <!-- Khu vực đăng ký -->
-    <h2>📌 Đăng ký khóa học</h2>
-    <input type="text" id="name" placeholder="Nhập tên của bạn">
-    <button onclick="registerStudent()">Đăng ký</button>
-    <p id="register-msg"></p>
-
-    <!-- Khu vực bài học -->
-    <h2>📖 Bài Học</h2>
-    <button onclick="completeLesson('Bài 1: Giới thiệu AI')">✅ Hoàn thành Bài 1</button>
-    <button onclick="completeLesson('Bài 2: Machine Learning')">✅ Hoàn thành Bài 2</button>
-    <h3>Bài học đã hoàn thành:</h3>
-    <ul id="completed-lessons"></ul>
-
-    <!-- Khu vực bài tập -->
-    <h2>💻 Bài Tập: Viết chương trình tính 10 + 5</h2>
-    <textarea id="code-input" rows="4" cols="50">print(10 + 5)</textarea>
-    <br>
-    <button onclick="checkAnswer()">📤 Nộp Bài</button>
-    <p id="result"></p>
-
-    <!-- Chatbot hỗ trợ -->
-    <h2>🤖 Chatbot Hỗ Trợ</h2>
-    <input type="text" id="chat-input" placeholder="Hỏi tôi về AI...">
-    <button onclick="chatbotResponse()">🗣 Hỏi</button>
-    <p id="chat-output"></p>
-
-    <!-- Cấp chứng chỉ -->
-    <h2>🏆 Nhận Chứng Chỉ</h2>
-    <button onclick="generateCertificate()">🎖️ Nhận Chứng Chỉ</button>
-    <p id="certificate-msg"></p>
+    <!-- Thêm nút kiểm tra xem Puter.js hoạt động hay chưa -->
+    <button onclick="testPuter()">Kiểm Tra Puter.js</button>
+    <p id="status"></p>
 
     <script>
-        // Đăng ký học viên
-        function registerStudent() {
-            let name = document.getElementById("name").value;
-            if (name) {
-                localStorage.setItem("student_name", name);
-                document.getElementById("register-msg").innerText = "🎉 Chào mừng " + name + " đến với lớp học AI!";
+        function testPuter() {
+            if (typeof Puter !== "undefined") {
+                document.getElementById("status").innerText = "✅ Puter.js đã sẵn sàng!";
             } else {
-                alert("Vui lòng nhập tên!");
-            }
-        }
-
-        // Lưu và hiển thị bài học đã hoàn thành
-        function completeLesson(lesson) {
-            let lessons = JSON.parse(localStorage.getItem("completed_lessons")) || [];
-            if (!lessons.includes(lesson)) {
-                lessons.push(lesson);
-                localStorage.setItem("completed_lessons", JSON.stringify(lessons));
-            }
-            displayCompletedLessons();
-        }
-
-        function displayCompletedLessons() {
-            let lessons = JSON.parse(localStorage.getItem("completed_lessons")) || [];
-            let list = document.getElementById("completed-lessons");
-            list.innerHTML = "";
-            lessons.forEach(lesson => {
-                let li = document.createElement("li");
-                li.innerText = lesson;
-                list.appendChild(li);
-            });
-        }
-
-        window.onload = displayCompletedLessons;
-
-        // Chấm bài tập tự động với Puter.js
-        function checkAnswer() {
-            let code = document.getElementById("code-input").value;
-            Puter.run(code).then(output => {
-                if (output.trim() == "15") {
-                    document.getElementById("result").innerText = "✅ Chính xác! Bạn đã hoàn thành bài tập.";
-                } else {
-                    document.getElementById("result").innerText = "❌ Sai rồi, hãy thử lại!";
-                }
-            }).catch(error => {
-                document.getElementById("result").innerText = "Lỗi: " + error;
-            });
-        }
-
-        // Chatbot hỗ trợ
-        function chatbotResponse() {
-            let question = document.getElementById("chat-input").value.toLowerCase();
-            let response = "Tôi chưa hiểu câu hỏi của bạn.";
-
-            if (question.includes("học ai như thế nào")) {
-                response = "Bạn có thể bắt đầu với Python và Machine Learning.";
-            }
-            if (question.includes("deep learning là gì")) {
-                response = "Deep Learning là một nhánh của Machine Learning sử dụng mạng nơ-ron nhân tạo.";
-            }
-
-            document.getElementById("chat-output").innerText = response;
-        }
-
-        // Cấp chứng chỉ khi hoàn thành bài học
-        function generateCertificate() {
-            let lessons = JSON.parse(localStorage.getItem("completed_lessons")) || [];
-            if (lessons.length >= 2) { // Đủ số bài học
-                document.getElementById("certificate-msg").innerText = "🎉 Chúc mừng! Bạn đã hoàn thành khóa học AI.";
-            } else {
-                document.getElementById("certificate-msg").innerText = "❌ Bạn cần hoàn thành tất cả bài học trước!";
+                document.getElementById("status").innerText = "❌ Lỗi: Puter.js chưa hoạt động!";
             }
         }
     </script>
 
 </body>
 </html>
+<script src="script.js"></script>
